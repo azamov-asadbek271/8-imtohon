@@ -7,7 +7,7 @@ function App() {
    {
      path: "/",
      element: (
-       <ProtectRouter user={false}>
+       <ProtectRouter user={true}>
          <HomeLayout />
        </ProtectRouter>
      ),
