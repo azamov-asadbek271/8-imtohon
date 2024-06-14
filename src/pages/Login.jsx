@@ -11,7 +11,7 @@ function Login() {
           autoPlay
           loop
           muted
-          className="max-h-full max-w-full object-cover"
+          className="h-full max-w-full object-cover"
         />
         <Form className=" flex flex-col gap-y-2 absolute" method="post">
           <div className="card  p-8 bg-none items-center  ">
