@@ -1,7 +1,7 @@
 import FormInput from "../components/FormInput";
 import { Link, Form } from "react-router-dom";
 import video from "../assets/video-bg.mp4";
-import { UseRegister } from "../hook/useRegister";
+import { UseRegister } from "../hook/UseRegister";
 function Login() {
    const { googleWithProvider } = UseRegister();
   return (

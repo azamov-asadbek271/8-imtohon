@@ -2,7 +2,7 @@ import { Form } from "react-router-dom";
 import FormInput from "../components/FormInput";
 import { Link,useActionData, } from "react-router-dom";
 import video from "../assets/video-bg.mp4"
-import { UseRegister } from "../hook/useRegister";
+import { UseRegister } from "../hook/UseRegister";
 import { FcGoogle } from "react-icons/fc";
 import { useEffect } from "react";
 
