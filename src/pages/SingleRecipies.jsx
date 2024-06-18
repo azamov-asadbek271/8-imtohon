@@ -1,4 +1,4 @@
-import { db } from "../firebase/FirebaseConfig";
+import { db } from "../firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { useLoaderData } from "react-router-dom";
 

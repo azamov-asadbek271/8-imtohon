@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase/FirebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 
 function Navbar() {
     const { user } = useSelector((state) => state.userState);

@@ -1,6 +1,6 @@
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useDispatch } from "react-redux";
-import { auth } from "../firebase/FirebaseConfig";
+import { auth } from "../firebase/firebaseConfig";
 import { login } from "../features/user/UserConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { updateProfile } from "firebase/auth";

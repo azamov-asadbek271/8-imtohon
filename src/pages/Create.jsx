@@ -3,7 +3,7 @@ import { FormInput } from "../components";
 import { useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
 import { collection,addDoc } from "firebase/firestore";
-import { db } from "../firebase/FirebaseConfig";
+import { db } from "../firebase/firebaseConfig";
 import { useSelector } from "react-redux";
 
 
