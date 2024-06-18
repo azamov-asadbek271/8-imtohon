@@ -41,7 +41,7 @@ function Create() {
        ...createData,
        ingredients,
        uid: user.uid,
-       id: Math.random() 
+       id: Math.random() * 10
      };
   
      addDoc(collection(db, "foods"), newCreateData);

@@ -16,7 +16,7 @@ import { Create, Home, HomeLayout, Login, Register, SingleRecipies, Theme } from
 import { action as RegisterActions } from "./pages/Register";
 import { action as CreateActions } from "./pages/Create";
 // loader
-import { loader as singleLoader } from "./pages/SingleRecipies";
+// import { loader as singleLoader } from "./pages/SingleRecipies";
 
 // userConfig
 import { login,authReady } from "./features/user/UserConfig";
@@ -51,7 +51,7 @@ function App() {
        {
          path: "/singleRecipies/:id",
          element: <SingleRecipies />,
-         loader: singleLoader,
+        //  loader: singleLoader,
        },
      ],
    },

@@ -2,19 +2,16 @@ import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 
 function ResipiesList({ recipies }) {
-    console.log(recipies);
   return (
     <div className="flex justify-between gap-3  flex-wrap ">
       {recipies.map((res) => {
-        console.log(res);
-        const { title, image, method, price, uid, cookingTime,id } = res;
+        const { title, image, method, price, cookingTime,id } = res;
+        console.log(id);
         return (
-          <>
-            {image && (
-              <div
-                key={res.id}
-                className=" lg:w-80  w-64 flex justify-between flex-col rounded bg-base-300 mb-6"
-              >
+          <div key={id}>
+            
+            {image && price && (
+              <div className=" lg:w-80  w-64 flex justify-between flex-col rounded bg-base-300 mb-6">
                 <div className="p-4">
                   {/* button */}
                   <div className="delete-box w-full justify-end flex ">
@@ -23,7 +20,7 @@ function ResipiesList({ recipies }) {
                   {/* title */}
                   <h1 className="text-2xl mb-3">{title}</h1>
                   {/* method */}
-                  <p className="line-clamp-3 mb-5">{method}</p>
+                  <p className="line-clamp-3 mb-5 h-24">{method}</p>
                   {/* time */}
                   <div className="Link-Box flex justify-end items-center gap-2 mb-4">
                     <Link
@@ -46,7 +43,7 @@ function ResipiesList({ recipies }) {
                 </div>
               </div>
             )}
-          </>
+          </div>
         );
       })}
     </div>
