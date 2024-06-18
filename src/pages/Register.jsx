@@ -1,10 +1,32 @@
 import { Form } from "react-router-dom";
 import FormInput from "../components/FormInput";
-import { Link } from "react-router-dom";
+import { Link,useActionData, } from "react-router-dom";
 import video from "../assets/video-bg.mp4"
+import { UseRegister } from "../hook/useRegister";
+import { FcGoogle } from "react-icons/fc";
+import { useEffect } from "react";
+
+// actions
+export const action = async ({ request }) => {
+  let formData = await request.formData();
+  let Name = formData.get("Name");
+  let Email = formData.get("Email");
+  let Password = formData.get("Password");
+  let Img = formData.get("Image");
+  console.log(Name, Email, Password, Img);
+  return { Name, Email, Password,Img };
+};
 
 
 function Register() {
+    const { googleWithProvider, register } = UseRegister();
+    const data = useActionData();
+    console.log(data);
+    useEffect(() => {
+      if (data) {
+        register(data);
+      }
+    }, [data]);
   return (
     <div>
       <div className="h-screen grid place-items-center overflow-hidden ">
@@ -27,16 +49,16 @@ function Register() {
             <FormInput type="password" label=" Password:" name="Password" />
             {/* button */}
 
-            <button type="button" className="btn btn-primary w-full mt-6 ">
+            <button  className="btn btn-primary w-full mt-6 ">
               Register
             </button>
 
             <button
-              //   onClick={googleWithProvider}
+                onClick={googleWithProvider}
               type="button"
               className="btn btn-secondary mt-4 w-full"
             >
-              {/* <ImGoogle className="text-2xl" /> */}
+          
               <span className="text-xl">Google</span>
             </button>
             <p className="text-center mt-3 text-white">

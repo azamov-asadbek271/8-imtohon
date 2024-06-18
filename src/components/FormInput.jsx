@@ -1,12 +1,16 @@
 
-function FormInput({ name, type, label, placeholder }) {
+function FormInput({ name, type, label, placeholder,min,max,step }) {
   return (
     <div className="form-control ">
       <label className=" w-full ">
         <div className="label">
-          <span className="label-text capitalize text-white">{label}</span>
+          <span className="label-text capitalize text-blue-400">{label}</span>
         </div>
         <input
+        required
+        min={min}
+        max={max}
+        step={step}
           name={name}
           type={type}
           placeholder={placeholder}

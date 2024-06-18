@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .con-align {
+    @apply max-w-[1210px] w-full px-[50px] mx-auto py-[20px]
+  }
+}

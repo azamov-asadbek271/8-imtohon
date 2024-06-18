@@ -1,9 +1,11 @@
-import { Form } from "react-router-dom";
 import FormInput from "../components/FormInput";
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 import video from "../assets/video-bg.mp4";
+import { UseRegister } from "../hook/useRegister";
 function Login() {
+   const { googleWithProvider } = UseRegister();
   return (
+ 
     <div>
       <div className="h-screen grid place-items-center overflow-hidden ">
         <video
@@ -23,16 +25,16 @@ function Login() {
             <FormInput type="password" label=" Password:" name="Password" />
             {/* button */}
 
-            <button type="button" className="btn btn-primary w-full mt-6 text-xl ">
+            <button  className="btn btn-primary w-full mt-6 text-xl ">
               Login
             </button>
 
             <button
-              //   onClick={googleWithProvider}
+                onClick={googleWithProvider}
               type="button"
               className="btn btn-secondary mt-4 w-full"
             >
-              {/* <ImGoogle className="text-2xl" /> */}
+             
               <span className="text-xl">Google</span>
             </button>
             <p className="text-center mt-3 text-white">
