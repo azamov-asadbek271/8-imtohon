@@ -9,12 +9,12 @@ import { useLoaderData } from "react-router-dom";
    const docSnap = await getDoc(docRef);
    console.log(docSnap.exists());
 
-  //  if (docSnap.exists()) {
-  //    return docSnap.data();
-  //  } else {
-  //    // docSnap.data() will be undefined in this case
-  //    console.log("No such document!");
-  //  }
+   if (docSnap.exists()) {
+     return docSnap.data();
+   } else {
+     // docSnap.data() will be undefined in this case
+     console.log("No such document!");
+   }
    return null;
  };
 
