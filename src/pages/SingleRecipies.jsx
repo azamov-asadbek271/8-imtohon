@@ -43,7 +43,10 @@ function SingleRecipies() {
 // console.log(recipe);
     
   return (
-    <div>SingleRecipies</div>
+    <div>SingleRecipies
+      <h2>hello
+      </h2>
+    </div>
   )
 }
 
