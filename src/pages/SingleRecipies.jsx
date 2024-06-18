@@ -7,7 +7,12 @@ import { useLoaderData } from "react-router-dom";
    const docRef = doc(db, "foods", params.id);
    const docSnap = await getDoc(docRef);
 
-   
+   if (docSnap.exists()) {
+     return docSnap.data();
+   } else {
+     // docSnap.data() will be undefined in this case
+     console.log("No such document!");
+   }
    return null;
  };
 
