@@ -4,3 +4,4 @@ export { default as Register } from "./Register";
 export { default as HomeLayout } from "./HomeLayout";
 export { default as Create } from "./Create";
 export { default as Theme } from "./Theme";
+export { default as Shopping } from "./Shopping";

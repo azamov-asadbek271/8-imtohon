@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { useState } from "react";
 import { generateAmountOptions } from "../uitls/index";
@@ -6,19 +6,22 @@ import { addItem } from "../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
 
 function ResipiesList({ recipies }) {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   return (
     <div className="flex justify-between gap-3  flex-wrap ">
       {recipies.map((res) => {
         const [amount, setAmount] = useState();
-        const { title, image, price, cookingTime,id } = res;
+        const { title, image, price, cookingTime, id, ingredients } = res;
           const cartProduct = {
-            cartID:title + id,
+            cartID: title + id,
             productID: id,
             image,
             title,
             price,
             amount: Number(amount),
+            ingredients,
+            cookingTime,
           };
           const addToCart = () => {
             dispatch(
@@ -26,6 +29,7 @@ function ResipiesList({ recipies }) {
                 product: cartProduct,
               })
             );
+            navigate("/shopping")
           };
         return (
           <div key={id}>
@@ -64,6 +68,7 @@ function ResipiesList({ recipies }) {
                     >
                       Add to Bag
                     </button>
+                    
 
                     <p className="p-1 bg-orange-400 rounded">
                       {cookingTime} Minutes

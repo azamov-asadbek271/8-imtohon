@@ -11,12 +11,11 @@ import { createBrowserRouter,Navigate,RouterProvider } from "react-router-dom";
 // components
 import { ProtectRouter } from "./components";
 // pages
-import { Create, Home, HomeLayout, Login, Register, Theme } from "./pages";
+import { Create, Home, HomeLayout, Login, Register, Shopping, Theme } from "./pages";
 // actions
 import { action as RegisterActions } from "./pages/Register";
 import { action as CreateActions } from "./pages/Create";
 // loader
-// import { loader as singleLoader } from "./pages/SingleRecipies";
 
 // userConfig
 import { login,authReady } from "./features/user/UserConfig";
@@ -48,7 +47,10 @@ function App() {
          path: "/theme",
          element: <Theme />,
        },
-       
+       {
+         path: "/shopping",
+         element: <Shopping />,
+       },
      ],
    },
    {
