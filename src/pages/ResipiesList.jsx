@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { useState } from "react";
-import { generateAmountOptions } from "../uitls/Index";
+import { generateAmountOptions } from "../uitls/index";
 import { addItem } from "../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
 
