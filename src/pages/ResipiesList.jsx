@@ -1,15 +1,34 @@
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
+import { useState } from "react";
+import { generateAmountOptions } from "../uitls/Index";
+import { addItem } from "../features/cart/CartSlice";
+import { useDispatch } from "react-redux";
 
 function ResipiesList({ recipies }) {
+  const dispatch = useDispatch()
   return (
     <div className="flex justify-between gap-3  flex-wrap ">
       {recipies.map((res) => {
-        const { title, image, method, price, cookingTime,id } = res;
-        console.log(id);
+        const [amount, setAmount] = useState();
+        const { title, image, price, cookingTime,id } = res;
+          const cartProduct = {
+            cartID:title + id,
+            productID: id,
+            image,
+            title,
+            price,
+            amount: Number(amount),
+          };
+          const addToCart = () => {
+            dispatch(
+              addItem({
+                product: cartProduct,
+              })
+            );
+          };
         return (
           <div key={id}>
-            
             {image && price && (
               <div className=" lg:w-80  w-64 flex justify-between flex-col rounded bg-base-300 mb-6">
                 <div className="p-4">
@@ -20,15 +39,32 @@ function ResipiesList({ recipies }) {
                   {/* title */}
                   <h1 className="text-2xl mb-3">{title}</h1>
                   {/* method */}
-                  <p className="line-clamp-3 mb-5 h-24">{method}</p>
+                  <p className="line-clamp-3 mb-2 font-bold">
+                    {price},000 So'm
+                  </p>
+                  <div className="form-control w-full max-w-xs mb-10">
+                    <label className="label mt-2">
+                      <h4 className=" text-md font-medium tracking-wider capitalize">
+                        amount
+                      </h4>
+                    </label>
+                    <select
+                      className="select select-secondary select-bordered select-sm"
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                    >
+                      {generateAmountOptions(10)}
+                    </select>
+                  </div>
                   {/* time */}
                   <div className="Link-Box flex justify-end items-center gap-2 mb-4">
-                    <Link
-                      to={`/singleRecipies/${id}`}
-                      className=" bg-emerald-400  p-[6px] rounded flex items-center "
+                    <button
+                      onClick={addToCart}
+                      className="btn btn-secondary btn-sm"
                     >
-                      <p className="text-white">Read More</p>
-                    </Link>
+                      Add to Bag
+                    </button>
+
                     <p className="p-1 bg-orange-400 rounded">
                       {cookingTime} Minutes
                     </p>

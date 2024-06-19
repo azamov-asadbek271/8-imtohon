@@ -11,7 +11,7 @@ import { createBrowserRouter,Navigate,RouterProvider } from "react-router-dom";
 // components
 import { ProtectRouter } from "./components";
 // pages
-import { Create, Home, HomeLayout, Login, Register, SingleRecipies, Theme } from "./pages";
+import { Create, Home, HomeLayout, Login, Register, Theme } from "./pages";
 // actions
 import { action as RegisterActions } from "./pages/Register";
 import { action as CreateActions } from "./pages/Create";
@@ -48,11 +48,7 @@ function App() {
          path: "/theme",
          element: <Theme />,
        },
-       {
-         path: "/singleRecipies/:id",
-         element: <SingleRecipies />,
-        //  loader: singleLoader,
-       },
+       
      ],
    },
    {
