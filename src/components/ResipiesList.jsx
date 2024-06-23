@@ -4,33 +4,46 @@ import { useState } from "react";
 import { generateAmountOptions } from "../uitls/index";
 import { addItem } from "../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
+import { deleteDoc,doc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
+
 
 function ResipiesList({ recipies }) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+   const deleteBtn = async (e, id) => {
+     e.stopPropagation();
+     try {
+       await deleteDoc(doc(db, "foods", id));
+       console.log("Document successfully deleted!");
+     } catch (error) {
+       console.error("Error removing document: ", error);
+     }
+   };
   return (
     <div className="flex justify-between gap-3  flex-wrap ">
+    
       {recipies.map((res) => {
         const [amount, setAmount] = useState();
         const { title, image, price, cookingTime, id, ingredients } = res;
-          const cartProduct = {
-            cartID: title + id,
-            productID: id,
-            image,
-            title,
-            price,
-            amount: Number(amount),
-            ingredients,
-            cookingTime,
-          };
-          const addToCart = () => {
-            dispatch(
-              addItem({
-                product: cartProduct,
-              })
-            );
-            navigate("/shopping")
-          };
+        const cartProduct = {
+          cartID: title + id,
+          productID: id,
+          image,
+          title,
+          price,
+          amount: Number(amount),
+          ingredients,
+          cookingTime,
+        };
+        const addToCart = () => {
+          dispatch(
+            addItem({
+              product: cartProduct,
+            })
+          );
+          navigate("/shopping");
+        };
         return (
           <div key={id}>
             {image && price && (
@@ -38,7 +51,9 @@ function ResipiesList({ recipies }) {
                 <div className="p-4">
                   {/* button */}
                   <div className="delete-box w-full justify-end flex ">
-                    <MdDelete className="text-3xl" />
+                    <button onClick={(e) => deleteBtn(e, id)}>
+                      <MdDelete className="text-3xl" />
+                    </button>
                   </div>
                   {/* title */}
                   <h1 className="text-2xl mb-3">{title}</h1>
@@ -68,7 +83,6 @@ function ResipiesList({ recipies }) {
                     >
                       Add to Bag
                     </button>
-                    
 
                     <p className="p-1 bg-orange-400 rounded">
                       {cookingTime} Minutes

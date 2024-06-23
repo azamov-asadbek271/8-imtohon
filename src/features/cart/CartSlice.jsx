@@ -10,7 +10,6 @@ const cartSlice = createSlice({
   initialState: defaultState,
   reducers: {
     addItem: (state, { payload }) => {
-        console.log(payload);
       const { product } = payload;
       const item = state.cartItem.find(
         (i) => (i.productID = product.productID)
@@ -39,13 +38,14 @@ const cartSlice = createSlice({
     //   toast.success("Cart updated");
     },
     editItem: (state, { payload }) => {
-    //   const { amount, cartID } = payload;
-    //   const item = state.cartItem.find((i) => i.cartID === cartID);
-    //   state.numItemsInCart += amount - item.amount;
-    //   state.cartTotal += item.price * (amount - item.amount);
-    //   item.amount = amount;
-    //   cartSlice.caseReducers.calulateTotal(state);
-    //   toast.success("Cart updated");
+        console.log(payload);
+      const { amount, cartID } = payload;
+      const item = state.cartItem.find((i) => i.cartID === cartID);
+      state.numItemsInCart += amount - item.amount;
+      state.cartTotal += item.price * (amount - item.amount);
+      item.amount = amount;
+      state.orderTotal = state.cartTotal
+      cartSlice.caseReducers.calulateTotal(state);
     },
     calulateTotal: (state) => {
     //   state.tax = 0.1 * state.cartTotal;
